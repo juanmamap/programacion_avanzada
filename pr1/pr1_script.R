@@ -1,0 +1,154 @@
+##### Ejercicio 1.1.3 citar R
+
+citation()
+
+##### Ejercicio 1.2.1 Variable para cada tipo de objeto
+
+varNum <- 6
+varTex <- "Hola"
+varFac <- factor("hola","adios")
+varBol <- a < b
+
+##### Ejercicio 1.2.2 Operaciones aritmeticas
+
+6 + 5
+a <- 6
+b <-  5 
+suma <- a + b
+suma
+c <- "Hola"
+d <- "Adios"
+sumaTex <- c(c,d)
+sumaTex
+
+##### Ejercicio 1.2.3 Generar vectores y resumir estadisticas
+
+vecA <- c(6311, 6564, 6598, 6629, 6699, 621, 65, 677)
+vecB <- c(1:9)
+vecC <- rep(c(1:5), each = 2)
+vecD <- rep(c(1:4), times = 3)
+vecE <- rep(c(2, 3, 1, 5, 6, 7), c(3, 3, 3, 7, 1, 3))
+
+##### Ejercicio 1.2.4 Matrices
+
+vecMat <- rnorm (200)
+matriz1 <- matrix (vecMat, nrow = 20, ncol = 10)
+View (matriz1)
+seleccion1 <- matriz1 [5,3]
+seleccion2 <- matriz1 [5,]
+seleccion3 <- matriz1 [,2]
+seleccion4 <- c (matriz1 [,1:5])
+
+##### Ejercicio 1.2.5 Data frames
+
+vecId <- c(1:100)
+vecTipo <- rep(c("Coche", "Moto"), each = 50)
+vecColor <- rep(c("Azul", "Rojo", "Verde", "Amarillo", "Blanco"), times = 20)
+vecVel <- rnorm (100, mean = 50, sd = 2)
+transporte <- data.frame(vecId, vecTipo, vecColor, vecVel)
+
+##### Seleccionar informacion del DataFrame
+
+# A
+
+sel <- rep(c("Azul", "Rojo", "Amarillo"))
+selecDataA <- transporte [transporte$vecColor == sel,]
+
+# B
+
+selecDataB <- transporte [,2:4]
+
+# C
+
+selecDataC <- transporte [transporte$vecTipo == "Coche" & transporte$vecColor == "Rojo" & transporte$vecVel > 50,]
+
+##### Creacion de funciones
+
+
+##### Ambiente de trabajo y funciones
+
+# Obtener directorio de trabajo
+
+setwd("D:/00-MASTER/Programacion_av/ProgAvanzada")
+getwd()
+
+# Paquetes
+
+install.packages("plyr")
+library("plyr")
+citation("plyr")
+
+##### Leer, manipular y salvar datos
+
+# Crear carpeta
+
+dir.create("practica12")
+
+# Crear csv
+
+write.csv(transporte, "practica12/transporte.csv")
+
+# Crear csv con estadisticas segun tipo y color
+
+write.csv(ddply (transporte,.(vecTipo, vecColor), summarize,
+                 mean.area = mean(vecVel),
+                 sd.area = sd(vecVel)), 
+          "practica12/transporte_sta.csv")
+
+# Crear grafico
+
+tiff("grafica_p1.tif", width = 210, height = 130, units = "mm", res = 400)
+par(mfrow = c(1,2))
+plot(transporte$vecTipo,transporte$vecVel)
+plot(transporte$vecColor,transporte$vecVel)
+dev.off()
+
+##### Condicionales
+
+# Igualdad y desigualdad
+
+TRUE == FALSE # False
+
+3*21 == 3-21 # False
+
+"UseR" == "User" # False (las cadenas de caracteres son sensibles a las mayusculas)
+
+TRUE == 1 # True
+
+# Menor y mayor
+
+1+1 < 12 # True
+
+"casa" < "chalet" # True (por numero de caracteres)
+
+TRUE >= FALSE # True (true es 1 y false es 0)
+
+##### Compara vectores
+
+gasolina <- c(1.357, 1.4, 1.5, 1.25, 1.3, 1.2)
+diesel <- c(1.2, 1.1, 1.3, 1.15, 1.2, 1.8)
+
+
+# A. En septiembre de 2019
+
+gasolina > 1.4
+
+# B. De julio a noviembre de 2019
+
+gasolina > diesel
+
+# C. En julio, agosto y octubre
+
+1.2 >= diesel
+
+# Matriz precio
+
+precio <- matrix(c(gasolina, diesel), nrow = 2, byrow = TRUE)
+
+# Matriz logica con iguales y menor o iguales a 1.3
+
+matrizLog <- matrix((precio == 1.3), nrow = 2, byrow = TRUE) 
+
+matrizLog <- matrix((precio <= 1.3), nrow = 2, byrow = TRUE) 
+
+# Practica de & y |

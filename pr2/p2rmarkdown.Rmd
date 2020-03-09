@@ -1,0 +1,174 @@
+---
+title: "Practica_2"
+author: "Marta Pulido López y Juan Manual Martín Jiménez"
+date: "26/2/2020"
+output: 
+  word_document:
+    reference: docx_template2.docx
+bibliography: refs.bib
+link-citations: yes
+csl: apa-no-issue-numbers.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+En este documento se dan respuestas a los ejercicios de la práctica 2, el cual ha sido generado con R Markdown utilizando R versión 3.6.2 (@RStudio). Además, para la realización de las tablas y gráficas se han usado paquetes adicionales, tales como Tidyverse 1.3.0. (@Tidyverse), Officer 0.3.6. (@Officer) y Flextable  0.5.8. (@Flextable).
+
+
+# 2.1. Responde a las siguientes preguntas:
+
+# (1)	¿Qué es la Ciencia Reproducible? ¿En qué casos se consigue un 100% de la reproducibilidad?
+
+La Ciencia Reproducible es aquella que permite garantizar que los resultados son perfectamente reproducibles ya que tanto la integración de texto, como el código y los datos incluidos permiten regenerar fácilmente el resultado final a partir de los datos originales. El análisis completo de datos y el manejo de los mismos se hace mediante código de tal forma que es posible recrear exactamente a partir de los datos originales todos los resultados y figuras incluidos y trazar de forma clara el proceso seguido para  obtener los resultados y reproducirlos (@rodriguez2016ciencia).
+
+Se consigue un 100% de reproducibilidad en aquellos casos en los que el análisis completo y el manejo de los datos se ha realizado mediante código.
+
+
+# (2)	¿Cuáles de los beneficios que se sugieren son para ti los más importantes? Justifica tu respuesta.
+
+Los principales beneficios de la Ciencia Reproducible es que se reduce significaticamente el riesgo de errores, es posible ejecutar tareas repetitivas sin esfuerzo y es muy fácil corregir y regenerar resultados, tablas y figuras. De esta forma, en caso de contener errores, es muy fácil detectarlos y corregirlos con sólo un botón y volver a generar todas las tablas, figuras y resultados de un trabajo, sin tener que usar diferentes cálculos y programas para su actualización (@rodriguez2016ciencia).
+
+Por último, otro de los beneficios que consideramos muy importantes es que contiene un registro de todos los pasos seguidos en el análisis, lo que resulta fácil de compartir entre los colaboradores así como para reutilizarlo pasado un tiempo (en el que sería muy difícil repetir cada uno de los pasos seguidos).
+
+
+# (3)	¿Por qué no hace todo el mundo Ciencia Reproducible?
+
+Realizar Ciencia Reproducible requiere dominar técnicas como bases de datos, programación, git o R cuyo control requiere que el usuario dedique tiempo para aprenderlas y coger soltura. 
+
+Por ello, familiarizarse con estas herramientas en un principio puede resultar tedioso, aunque el tiempo invertido en aprender a utilizar este tipo de herramientas se ve recompensado cuando podemos regenerar todo un manuscrito, tablas y figuras incluidas con un solo clic. 
+
+## 2.2. Lee el artículo “¿Por qué usar GitHub? Diez pasos para disfrutar de GitHub y no morir en el intento” (Galiano 2018) Realiza las siguientes tareas.
+
+
+Como evidencia de creación del repositorio, se puede consultar: [Repositorio](https://github.com/martapulido/practica2.git) 
+
+
+## 2.3. Lee “¿Por qué usar GitHub? Diez pasos para disfrutar de GitHub y no morir en el intento”. Comprueba que tienes “claro” los siguientes conceptos:
+
+Leído el artículo “¿Por qué usar GitHub? Diez pasos para disfrutar de GitHub y no morir en el intento” (@prieto2018que) se definen los conceptos:
+
+-	Repositorio: es un directorio público o privado en el que se guardan los archivos que contiene git y que git monitorea.
+-	Rama: es una especie de copia que permite realizar modificaciones en respositorios sin modificar los archivos originales. Git permite crear una especie de línea paralela de trabajo que posteriormente analizará si detecta conflicto la línea principal u otras y que se podrá unir a la rama principal posteriormente si el responsable del respositorio lo autoriza. Es útil para trabajar varias personas a la vez ya que registra las modificaciones que se realizan e informa al responsable de los cambios, quien puede o no aceptarlos.
+-	Pull and push: pull permite descargar las actualizaciones del repositorio y push permite subir las modificaciones al respositorio.
+-	Fork: permite hacer una copia de repositorios ajenos.
+
+
+
+# 2.4. RMarkdown. 
+
+
+## 2.4.1. Generación de un documento de html con varias sintaxis.
+
+Se crean opciones de sintaxis básicas de Pandoc Markdown conforme se solicita:
+
++ Texto plano.
+
++ *Cursiva*
+
++ __Negrita__
+
++ Superíndice^2^: r^2^ 
+
++ *Subíndice~2~: SO~4~
+
++ ~~Tachado~~
+
++ [rstudio](www.rstudio.com)
+
++ Ecuación en línea: $A = \pi*r^{2}$ 
+
++ Ecuación en bloque: $\frac{\sqrt{\lambda} }{n_i}$
+
+# Encabezado 1
+
+## Encabezado 2
+
+### Encabezado 3
+
+#### Encabezado 4
+
+##### Encabezado 5
+
+###### Encabezado 6 
+
+
+## 2.4.2.	Escribe fragmentos de código con las siguientes características:
+
+a.	Peguen las palabras “Hola” y “mundo” en una línea nueva
+
+```{r, collapse=TRUE}
+"Hola"
+
+"Mundo"
+```
+
+
+b.	Peguen las palabras “Hola” y “mundo” en la misma línea de código
+
+```{r}
+paste("Hola", "mundo")
+```
+
+
+c.	Peguen las palabras “Hola” y “mundo” en una línea nueva de código y que no muestren el resultado de R
+
+```{r, eval = FALSE}
+paste("Hola", "mundo")
+```
+
+
+d.	Peguen las palabras “Hola” y “mundo” en una línea nueva de código y que no muestren el resultado de R y que no se muestre en el documento de Word.
+
+
+```{r, include = FALSE}
+paste("Hola", "mundo")
+```
+
+## 3.	Muestra una tabla y una gráfica en el archivo de salida, tomando alguno de los datos que vienen en R o alguno de sus paquetes. ¡¡Se creativo!! Usando (al menos): encabezados, explicaciones, ecuaciones, líneas de código en el texto y bloques de código.
+
+Se incluye una fórmula para el cálculo de la desviación típica y se vincula el resultado al cálculo de un campo de Iris, concretamente Sepal.With de modo que el resultado mostado es el cálculo de la desviación típica del ancho del sépalo.
+
+$\delta = \frac{\sum x^{N}_{i=1}(x-\overline{x})}{N}$= `r sd(iris$Sepal.Width)`
+
+
+Se crea una tabla en la que se incluyan aquellas especies que tengan una longitud del sépalo entre 1 y 5 en color verde y en negrita aquellas especies que tengan un ancho de sépalo mayor a 3.
+
+```{r,eval=TRUE, echo=FALSE, message=FALSE, include=TRUE}
+library("flextable")
+library("dplyr")
+library("officer") #para tablas
+library("tidyverse") #para manejo de datos
+
+datos <- iris[c(1:5, 51:55, 101:105),]
+tabla <- flextable(datos) 
+tabla <- align(tabla, align = "center", part = "all") # alineamos encabezado y cuerpo en el centro 
+tabla <- fontsize(tabla, size = 10, part = "all") 
+tabla <- color(tabla, i = ~ Sepal.Length < 5 & Petal.Length > 1, color = "green")  # seleccion en verde aquellas que tengan una longitud del sépalo entre 1 y 5
+tabla <- bold(tabla, i = ~ Sepal.Width > 3) # seleccion en negrita de aquellas que tengan un ancho de mayor a 3
+tabla
+```
+
+
+Se incluye un gráfico de la longitud y ancho del sépalo en función de la especie.
+
+```{r,eval=TRUE, echo=FALSE, message=FALSE, include=TRUE}
+
+library("dplyr")
+
+grafico <- ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, colour = Species)) # Creamos gráfico de ancho y longitud del sepalo con colores en función de la especie
+grafico <- grafico + geom_point(aes(shape = Species)) # añadimos la capa con geom_point donde incluimos diferentes geometrias de puntos en función de la especie
+grafico <- grafico + xlab("Longitud del sépalo") + ylab("Ancho del sépalo") # incluimos nombres en español a los ejes
+grafico <- grafico + geom_smooth(method = "lm") # incluye una regresión lineal con la tendencia de los datos
+grafico <- grafico + facet_grid(Species ~ . ) # incluimos un faceteado que divide el grafico en diferentes graficos en funcion de la especie
+grafico <- grafico + theme_bw() # incluimos un tema de fondo
+grafico
+```
+
+
+
+## Referencias: 
+
+
+
