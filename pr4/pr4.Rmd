@@ -35,8 +35,73 @@ Intentar utilizar los datos de forma repoducible conectandonos a las diferentes 
 *** En punto cinco de la Pr se refiere a ensamblaje de modelos generales de predicción de chelsa.
 
 
+Instalar las siguientes librerias
+
+Codigo probado en sesion de 10/03
+```{r}
+#install.packages("dismo")
+#install.packages("XML")
+#install.packages("maptools")
+
+library("dismo")
+library("XML")
+library("maptools")
+library("dplyr")
+
+?gbif
+
+lince <- gbif("Lynx", "pardinus", download = TRUE)
+head(lince)
+str(lince)
+glimpse(lince)
 
 
+write.csv(lince,"lince_ocurrencia.csv")
+x11()
+plot(lince$lat ~ lince$lon, pch = 16, cex = 0.6, col = "red")
+summary(lince[,c("lat","lon")])
+
+data("wrld_simpl")
+plot(wrld_simpl, xlim = c(-8,2),
+     ylim=c(35,43), axes = TRUE, col= "grey")
+box() #
+points(lince$lat ~ lince$lon, pch = 20, cex = 0.6, col="red")
+getwd()
+
+## Leer todos los archivos de una misma carpeta
+
+path <- "D:/00-MASTER/Programacion_av/bioclim"
+files <- list.files(path, pattern = 'tif$', full.names = TRUE)
+files
+
+## Creo un stack de todos los raster
+
+predictores <- stack(files)
+names(predictores)
+x11()
+plot(predictores)
+
+## Haremos un clip de nuestra extensión de todos los archivos tif para el recorte
+
+range (na.omit(lince[,c("lon")])) #○ para ver que la extensión a cortar esta dentro de las coordenads
+range (na.omit(lince[,c("lat")]))
+
+e <- extent(-12,5,35,45)
+pred <- crop(predictores, e)
+dev.off()
+x11()
+plot(pred,9)
+points(lince$lat ~ lince$lon, pch = 20, cex = 1.5, col="red")
+
+## extraer las coordenadas donde esta el lince del archivo raster
+
+coord <- lince[,c]
+
+
+```
+
+
+?gbif
 
 
 
