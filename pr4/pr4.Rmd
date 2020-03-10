@@ -1,0 +1,43 @@
+---
+title: "Practica4"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown de inicio de Práctica 4
+
+Seguir el guión de tema 4.
+
+Modelos de distribución de especies.
+
+Por un lado datos de ocurrencia de determinadas especies los cuales vamos a unir a otros datos ambientales (climas, relieve,etc) para la predicción de la distribución.
+
+Estos modelos se utilizaran para la predicción de las distribuciones de las especies. Sería la probabilidad de presencia o ausencia de estas en cada píxel.
+
+
+Por un lado para la práctica usaremos un modelo de distribución de especies y por otro Modelos climáticos (modelos de circulación) y por otro Modelos de Cambio Climático (escenarios de emisión por el IPCC).
+
+Los modelos habría que calibrarlos comprobando el sesgo y el error.
+
+La resolución y la escala en la que son recogidos los datos también deben ser una variable importante a tener en cuenta.
+
+
+## Definir el objetivo y crear modelo
+
+# Modelos de clima
+
+Intentar utilizar los datos de forma repoducible conectandonos a las diferentes modelos (climáticos, de distribución de especies) de forma interoperable.
+
+
+*** En punto cinco de la Pr se refiere a ensamblaje de modelos generales de predicción de chelsa.
+
+
+
+
+
+
+
+

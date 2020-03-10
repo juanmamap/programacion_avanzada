@@ -1,7 +1,7 @@
 ---
 title: "Practica1"
 author: "Juan M. Martin"
-date: "8/3/2020"
+date: "10/3/2020"
 output: word_document
 ---
 
@@ -19,16 +19,15 @@ citation()
 
 ## Ejercicio 1.2.1 Variable para cada tipo de objeto
 
-varNum <- 6
-varTex <- "Hola"
-varFac <- factor("hola","adios")
-varBol <- a < b
+Definimos variables de cada tipo. Numéricos, cadenas de texto, boleanos, etc..
 
 ```{r}
 varNum <- 6
 varTex <- "Hola"
 varFac <- factor("hola","adios")
-#varBol <- a < b
+a <- 1
+b <- 2
+varBol <- a < b
 ```
 
 ## Ejercicio 1.2.2 Operaciones aritmeticas
